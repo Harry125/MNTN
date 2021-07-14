@@ -1,0 +1,138 @@
+// css footer
+footer {
+    --pdFooter: 100px;
+    padding-top: var(--pdFooter);
+    padding-bottom: 120px;
+    --wRight: 566px;
+    --wLeft: 400px;
+    --fzTitle: 24px;
+    --fzContent: 18px;
+    .container {
+        position: relative;
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+            display: grid;
+            grid-template-columns: 1fr var(--wRight);
+            .left {
+                position: relative;
+                width: var(--wLeft);
+                .logo {
+                    a {
+                        @include text(32px, cdb, 38px, $white-cl, uppercase);
+                        margin-bottom: 12px;
+                        cursor: pointer;
+                    }
+                }
+                .des {
+                    @include text(18px, grb, 32px, $white-cl, none);
+                    margin: 12px 0;
+                }
+            }
+            .title {
+                @include text(var(--fzTitle), grb, 32px, $text-cl, none);
+                margin-bottom: 16px;
+            }
+            .ct {
+                display: flex;
+                flex-direction: column;
+                a {
+                    @include text(var(--fzContent), grm, 32px, $white-cl, none);
+                    @include transition($t);
+                    &:hover {
+                        color: $white-cl;
+                        opacity: 0.5;
+                        @include transition($t);
+                    }
+                    &:not(:last-child) {
+                        padding: 8px 0;
+                    }
+                    &:last-child {
+                        padding-top: 8px;
+                    }
+                }
+            } 
+            .right {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+        }
+        .copy {
+            position: absolute;
+            left: 15px;
+            bottom: 0;
+            @include text(18px, grm, 32px, $white-cl, none);
+            opacity: 0.5;
+        }
+        .socials {
+            display: none;
+        }
+    }
+    @include lg {
+        --wRight: 466px;
+    }
+    @include sm {
+        --pdFooter: 50px;
+        --wRight: 320px;
+        --wLeft: 300px;
+        --fzTitle: 20px;
+        --fzContent: 16px;      
+        padding-bottom: 80px;
+        .container {
+            .row {
+                .title {
+                    margin-bottom: 10px;
+                }
+            }
+            .copy {
+                font-size: 16px;
+            }
+        }
+    }
+    @include xs {
+        --wLeft: 100%;
+        .container {
+            .row {
+                grid-template-columns: 1fr;
+                .left {
+                    order: 1;
+                    text-align: center;
+                }
+                .right {
+                    .blog {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            .copy {
+                position: relative;
+                left: 0;
+                text-align: center;
+            }
+            .socials {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                pointer-events: auto;
+                svg {
+                    width: 30px;
+                    fill: $white-cl;
+                }
+                a {
+                    margin: 15px 20px;
+                    @include transition($t);
+                    &:hover {
+                        color: $text-cl;
+                        @include transition($t);
+                        svg {
+                            fill: $text-cl;
+                            @include transition($t);
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
